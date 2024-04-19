@@ -7,24 +7,27 @@ const Service = () => {
   const [saltLevel, setSaltLevel] = useState(0);
   const [sweetLevel, setSweetLevel] = useState(0);
 
-  const [favoriteTaste, setFavoriteTaste] = useState({
+  const [spicyTaste, setSpicyTaste] = useState({
     Likespicy: false,
-    Likebitter: false,
-    Likesalt: false,
-    Likesweet: false,
-  });
-
-  const [middleTaste, setMiddleTaste] = useState({
     Sosospicy: false,
-    Sosobitter: false,
-    Sososalt: false,
-    Sososweet: false,
+    Unlikespicy: false,
   });
 
-  const [dislikeTaste, setDislikeTaste] = useState({
-    Unlikespicy: false,
+  const [bitterTaste, setBitterTaste] = useState({
+    Likebitter: false,
+    Sosobitter: false,
     Unlikebitter: false,
+  });
+
+  const [saltTaste, setSaltTaste] = useState({
+    Likesalt: false,
+    Sososalt: false,
     Unlikesalt: false,
+  });
+
+  const [sweetTaste, setSweetTaste] = useState({
+    Likesweet: false,
+    sososweet: false,
     Unlikesweet: false,
   });
 
@@ -34,46 +37,102 @@ const Service = () => {
 
     if (spicyLevel == 3) {
       console.log("매운맛을 매우 좋아하는 사람");
+      setSpicyTaste({
+        Likespicy: true,
+        Sosospicy: false,
+        Unlikespicy: false,
+      });
     } else if (spicyLevel == 2) {
       console.log("매운맛을 싫어하지도 좋아하지도 않는 사람");
+      setSpicyTaste({
+        Likespicy: false,
+        Sosospicy: true,
+        Unlikespicy: false,
+      });
     } else {
       console.log("매운맛을 싫어하는 사람");
+      setSpicyTaste({
+        Likespicy: false,
+        Sosospicy: false,
+        Unlikespicy: true,
+      });
     }
 
     if (bitterLevel == 3) {
       console.log("쓴맛을 매우 좋아하는 사람");
-      setFavoriteTaste({ bitterLevel: 3 });
+      setBitterTaste({
+        Likebitter: true,
+        Sosobitter: false,
+        Unlikebitter: false,
+      });
     } else if (bitterLevel == 2) {
       console.log("쓴맛을 싫어하지도 좋아하지도 않는 사람");
-      setMiddleTaste({ bitterLevel: 2 });
+      setBitterTaste({
+        Likebitter: false,
+        Sosobitter: true,
+        Unlikebitter: false,
+      });
     } else {
-      setDislikeTaste.push("쓴맛을 싫어하는 사람");
-      setDislikeTaste({ bitterLevel: 1 });
+      console.log("쓴맛을 싫어하는 사람");
+      setBitterTaste({
+        Likebitter: false,
+        Sosobitter: false,
+        Unlikebitter: true,
+      });
     }
 
     if (saltLevel == 3) {
       console.log("짠맛을 매우 좋아하는 사람");
-      setFavoriteTaste({ saltLevel: 3 });
+      setSaltTaste({
+        Likesalt: true,
+        Sososalt: false,
+        Unlikesalt: false,
+      });
     } else if (saltLevel == 2) {
       console.log("짠맛을 싫어하지도 좋아하지도 않는 사람");
-      setMiddleTaste({ saltLevel: 2 });
+      setSaltTaste({
+        Likesalt: false,
+        Sososalt: true,
+        Unlikesalt: false,
+      });
     } else {
       console.log("짠맛을 싫어하는 사람");
-      setDislikeTaste({ saltLevel: 1 });
+      setSaltTaste({
+        Likesalt: false,
+        Sososalt: false,
+        Unlikesalt: true,
+      });
     }
 
     if (sweetLevel == 3) {
       console.log("단맛을 매우 좋아하는 사람");
-      setFavoriteTaste({ sweetLevel: 3 });
+      setSweetTaste({
+        Likesweet: true,
+        sososweet: false,
+        Unlikesweet: false,
+      });
     } else if (sweetLevel == 2) {
       console.log("단맛을 좋아하지도 싫어하지도 않는 사람");
-      setMiddleTaste({ sweetLevel: 2 });
+      setSweetTaste({
+        Likesweet: false,
+        sososweet: true,
+        Unlikesweet: false,
+      });
     } else {
       console.log("단맛을 싫어하는 사람");
-      setDislikeTaste({ sweetLevel: 1 });
+      setSweetTaste({
+        Likesweet: false,
+        sososweet: false,
+        Unlikesweet: true,
+      });
     }
   };
 
+  console.log(spicyTaste);
+  console.log(bitterTaste);
+  console.log(saltTaste);
+  console.log(sweetTaste);
+  
   return (
     <>
       <div className="screen1">
@@ -281,7 +340,7 @@ const Service = () => {
       </div>
 
       <div className="screen3">
-        <h1>당신은 `{favoriteTaste}`맛을 좋아하는 사용자 입니다.</h1>
+        <h1>당신은 ``맛을 좋아하는 사용자 입니다.</h1>
         <button>관련 식당 조회하기</button>
       </div>
     </>

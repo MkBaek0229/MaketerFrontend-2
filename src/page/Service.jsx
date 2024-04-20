@@ -34,27 +34,27 @@ const Service = () => {
   
   const Checker = (e) => {
     e.preventDefault();
+
     
     const choicedTasteList = [choicedSpicyTaste, choicedBitterTaste, choicedSaltTaste, choicedSweetTaste];
     setChoiced_TasteList(choicedTasteList);
-
-    const result = Object.groupBy(choiced_TasteList, ({ level }) => level);
     
-    if(result[3].length >= 2) {
-      console.log("좋아하는 맛이 두개이상이네요!")
-      console.log(result[3].map(el => el.name).join(","));
-      setChoice_favorite(result[3].map(el => el.name).join(","))
-    } else {
-      console.log(result[3].map(el => el.name).join(","));
-      setChoice_favorite(result[3].map(el => el.name))
-    }
-   
 
-   
+    const result = Object.groupBy(choiced_TasteList, ({ level }) => level == 3 ? "good" : "bad");
+    
+    setChoice_favorite(result.good.map(el => el.name).join())
+    // if(result[3].length >= 2) {
+    //   console.log("좋아하는 맛이 두개이상이네요!")
+    //   console.log(result[3].map(el => el.name).join(","));
+    //   setChoice_favorite(result[3].map(el => el.name).join(","))
+    // } else {
+    //   console.log(result[3].map(el => el.name).join(","));
+    //   setChoice_favorite(result[3].map(el => el.name))
+    // }
+
   };
 
-  
-  
+
   return (
     <>
       <div className="screen1">

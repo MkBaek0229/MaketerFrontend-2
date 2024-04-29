@@ -1,5 +1,5 @@
 // FoodIndex.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 function FoodIndex({ restaurant }) {
@@ -19,8 +19,14 @@ function FoodIndex({ restaurant }) {
         <InfoText>{restaurant.opening_hours}</InfoText>
       </InfoContainer>
       <InfoContainer>
-        <InfoLabel>맛:</InfoLabel>
-        <InfoText>{restaurant.taste_level}</InfoText>
+        <InfoLabel>신맛:</InfoLabel>
+        <InfoText>{restaurant.taste_level.sour}</InfoText>
+        <InfoLabel>짠맛:</InfoLabel>
+        <InfoText>{restaurant.taste_level.salty}</InfoText>
+        <InfoLabel>단맛:</InfoLabel>
+        <InfoText>{restaurant.taste_level.sweet}</InfoText>
+        <InfoLabel>쓴맛:</InfoLabel>
+        <InfoText>{restaurant.taste_level.bitter}</InfoText>
       </InfoContainer>
       <InfoContainer>
         <InfoLabel>별 점:</InfoLabel>

@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [nickname, setNickname] = useState("");
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
@@ -70,7 +71,7 @@ function App() {
             !isAuthenticated ? (
               <Navigate to="/" />
             ) : (
-              <HomeHN setAuth={setAuth} />
+              <HomeHN setAuth={setAuth} nickname={nickname} />
             )
           }
         />
@@ -90,36 +91,36 @@ const MainHN = ({ setAuth }) => (
 );
 
 // 나머지 페이지에서는 Header와 NavigationBar를 포함하여 컴포넌트를 렌더링
-const HomeHN = ({ setAuth }) => (
+const HomeHN = ({ setAuth, nickname }) => (
   <div>
-    <Header setAuth={setAuth} />
+    <Header setAuth={setAuth} nickname={nickname} />
     <NavigationBar />
     <Home setAuth={setAuth} />
     <KakaoMap />
   </div>
 );
 
-const SearchHN = ({ setAuth }) => (
+const SearchHN = ({ setAuth, nickname }) => (
   <div>
-    <Header setAuth={setAuth} />
+    <Header setAuth={setAuth} nickname={nickname} />
     <NavigationBar />
     <Search />
     <KakaoMap />
   </div>
 );
 
-const RankHN = ({ setAuth }) => (
+const RankHN = ({ setAuth, nickname }) => (
   <div>
-    <Header setAuth={setAuth} />
+    <Header setAuth={setAuth} nickname={nickname} />
     <NavigationBar />
     <Rank />
     <KakaoMap />
   </div>
 );
 
-const ServiceHN = ({ setAuth }) => (
+const ServiceHN = ({ setAuth, nickname }) => (
   <div>
-    <Header setAuth={setAuth} />
+    <Header setAuth={setAuth} nickname={nickname} />
     <NavigationBar />
     <Service />
     <KakaoMap />

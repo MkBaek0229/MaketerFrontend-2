@@ -72,7 +72,7 @@ const KakaoMap = () => {
       {selectedRestaurant && (
         <StyledModal
           isOpen={true}
-          onRequ  estClose={() => setSelectedRestaurant(null)}
+          onRequestClose={() => setSelectedRestaurant(null)}
         >
           <FoodIndex restaurant={selectedRestaurant} />
         </StyledModal>

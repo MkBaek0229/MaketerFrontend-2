@@ -41,7 +41,7 @@ const FoodBox = () => {
           <Image src={restaurant.image} alt={restaurant.restaurants_name} />
         </Box>
       ))}
-      {selectedRestaurant && (
+      {selectedRestaurantId && (
         <RestaurantDetails>
           <FoodDetail selectedRestaurant={selectedRestaurant} />
         </RestaurantDetails>

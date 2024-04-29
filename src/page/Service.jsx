@@ -7,132 +7,55 @@ const Service = () => {
   const [saltLevel, setSaltLevel] = useState(0);
   const [sweetLevel, setSweetLevel] = useState(0);
 
-  const [spicyTaste, setSpicyTaste] = useState({
-    Likespicy: false,
-    Sosospicy: false,
-    Unlikespicy: false,
-  });
+  const choicedSpicyTaste = {
+    name: "매운",
+    level: spicyLevel,
+  };
 
-  const [bitterTaste, setBitterTaste] = useState({
-    Likebitter: false,
-    Sosobitter: false,
-    Unlikebitter: false,
-  });
+  const choicedBitterTaste = {
+    name: "쓴",
+    level: bitterLevel,
+  };
 
-  const [saltTaste, setSaltTaste] = useState({
-    Likesalt: false,
-    Sososalt: false,
-    Unlikesalt: false,
-  });
+  const choicedSaltTaste = {
+    name: "짠",
+    level: saltLevel,
+  };
 
-  const [sweetTaste, setSweetTaste] = useState({
-    Likesweet: false,
-    sososweet: false,
-    Unlikesweet: false,
-  });
+  const choicedSweetTaste = {
+    name: "달콤한",
+    level: sweetLevel,
+  };
+
+  const [choiced_TasteList, setChoiced_TasteList] = useState([]);
+
+  const [choice_favorite, setChoice_favorite] = useState([]);
 
   const Checker = (e) => {
     e.preventDefault();
-    console.log(spicyLevel, bitterLevel, saltLevel, sweetLevel);
 
-    if (spicyLevel == 3) {
-      console.log("매운맛을 매우 좋아하는 사람");
-      setSpicyTaste({
-        Likespicy: true,
-        Sosospicy: false,
-        Unlikespicy: false,
-      });
-    } else if (spicyLevel == 2) {
-      console.log("매운맛을 싫어하지도 좋아하지도 않는 사람");
-      setSpicyTaste({
-        Likespicy: false,
-        Sosospicy: true,
-        Unlikespicy: false,
-      });
-    } else {
-      console.log("매운맛을 싫어하는 사람");
-      setSpicyTaste({
-        Likespicy: false,
-        Sosospicy: false,
-        Unlikespicy: true,
-      });
-    }
+    const choicedTasteList = [
+      choicedSpicyTaste,
+      choicedBitterTaste,
+      choicedSaltTaste,
+      choicedSweetTaste,
+    ];
+    setChoiced_TasteList(choicedTasteList);
 
-    if (bitterLevel == 3) {
-      console.log("쓴맛을 매우 좋아하는 사람");
-      setBitterTaste({
-        Likebitter: true,
-        Sosobitter: false,
-        Unlikebitter: false,
-      });
-    } else if (bitterLevel == 2) {
-      console.log("쓴맛을 싫어하지도 좋아하지도 않는 사람");
-      setBitterTaste({
-        Likebitter: false,
-        Sosobitter: true,
-        Unlikebitter: false,
-      });
-    } else {
-      console.log("쓴맛을 싫어하는 사람");
-      setBitterTaste({
-        Likebitter: false,
-        Sosobitter: false,
-        Unlikebitter: true,
-      });
-    }
-
-    if (saltLevel == 3) {
-      console.log("짠맛을 매우 좋아하는 사람");
-      setSaltTaste({
-        Likesalt: true,
-        Sososalt: false,
-        Unlikesalt: false,
-      });
-    } else if (saltLevel == 2) {
-      console.log("짠맛을 싫어하지도 좋아하지도 않는 사람");
-      setSaltTaste({
-        Likesalt: false,
-        Sososalt: true,
-        Unlikesalt: false,
-      });
-    } else {
-      console.log("짠맛을 싫어하는 사람");
-      setSaltTaste({
-        Likesalt: false,
-        Sososalt: false,
-        Unlikesalt: true,
-      });
-    }
-
-    if (sweetLevel == 3) {
-      console.log("단맛을 매우 좋아하는 사람");
-      setSweetTaste({
-        Likesweet: true,
-        sososweet: false,
-        Unlikesweet: false,
-      });
-    } else if (sweetLevel == 2) {
-      console.log("단맛을 좋아하지도 싫어하지도 않는 사람");
-      setSweetTaste({
-        Likesweet: false,
-        sososweet: true,
-        Unlikesweet: false,
-      });
-    } else {
-      console.log("단맛을 싫어하는 사람");
-      setSweetTaste({
-        Likesweet: false,
-        sososweet: false,
-        Unlikesweet: true,
-      });
-    }
+    const result = Object.groupBy(choiced_TasteList, ({ level }) =>
+      level == 3 ? "good" : "bad"
+    );
+    setChoice_favorite(result.good.map((el) => el.name).join());
+    // if(result[3].length >= 2) {
+    //   console.log("좋아하는 맛이 두개이상이네요!")
+    //   console.log(result[3].map(el => el.name).join(","));
+    //   setChoice_favorite(result[3].map(el => el.name).join(","))
+    // } else {
+    //   console.log(result[3].map(el => el.name).join(","));
+    //   setChoice_favorite(result[3].map(el => el.name))
+    // }
   };
 
-  console.log(spicyTaste);
-  console.log(bitterTaste);
-  console.log(saltTaste);
-  console.log(sweetTaste);
-  
   return (
     <>
       <div className="screen1">
@@ -153,7 +76,7 @@ const Service = () => {
           </h1>
         </div>
         <div>
-          <form action="">
+          <form action="#">
             <Fildset>
               <fieldset>
                 <legend>
@@ -169,7 +92,6 @@ const Service = () => {
                     onClick={() => {
                       setSpicyLevel(2);
                     }}
-                    checked
                   />
                   <label htmlFor="survey1-1">1. 육개장 사발면</label>
                 </div>
@@ -340,7 +262,7 @@ const Service = () => {
       </div>
 
       <div className="screen3">
-        <h1>당신은 ``맛을 좋아하는 사용자 입니다.</h1>
+        <h1>당신은 {choice_favorite}맛을 좋아하는 사용자 입니다.</h1>
         <button>관련 식당 조회하기</button>
       </div>
     </>
@@ -349,7 +271,7 @@ const Service = () => {
 export default Service;
 
 const Fildset = styled.div`
-  max-width: 1000px;
+  max-width: 600px;
   max-height: 100vh;
   margin-bottom: 18px;
 `;

@@ -4,18 +4,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
-function Header({ setAuth }) {
-  const [name, setName] = useState("");
-
+function Header({ setAuth, nickname }) {
   async function getName() {
     try {
-      const response = await fetch("http://localhost:3000/dashboard/", {
+      const response = await fetch("http://localhost:3000/dashboard", {
         method: "GET",
-        headers: { token: localStorage.token },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`,
+        },
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      console.log(parseRes.user_name);
 
       setName(parseRes.user_name);
     } catch (err) {
@@ -41,10 +42,7 @@ function Header({ setAuth }) {
     <Container>
       <Cell className="left">
         <Link to={"/"}>
-          <Img
-            src="https://modo-phinf.pstatic.net/20150520_153/1432118386155aFLGK_JPEG/mosaBygLif.jpeg?type=f320_320"
-            alt="Logo"
-          />
+          <Img src="../../public/assets/logo.png" alt="Logo" />
         </Link>
       </Cell>
 
@@ -91,3 +89,9 @@ const UserName = styled.span`
   color: #333;
   align-self: center;
 `;
+
+
+const Logout = styled.button`
+   <a href="#" class="btn-gradient orange small">Button</a>
+   
+`

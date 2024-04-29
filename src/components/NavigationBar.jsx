@@ -6,13 +6,13 @@ function NavigationBar() {
   return (
     <StyledNavigationBar>
       <Container>
-      <NavLinkContainer>
+        <NavLinkContainer>
           <NavLink to="/home">홈</NavLink>
           <NavLink to="/search">검색</NavLink>
           <NavLink to="/service">맛 설정 모드</NavLink>
           <NavLink to="/rank">맛 집 랭킹</NavLink>
           <NavLink to="/cuminte">커뮤니티</NavLink>
-      </NavLinkContainer>
+        </NavLinkContainer>
       </Container>
     </StyledNavigationBar>
   );
@@ -26,7 +26,7 @@ const StyledNavigationBar = styled.nav`
 `;
 
 const Container = styled.div`
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   height: 50px;
@@ -47,6 +47,7 @@ const NavLink = styled(Link)`
   line-height: 50px;
   font-family: "Roboto", sans-serif;
   font-weight: bold; /* 폰트 두껍게 설정 */
+  font-size: 25px;
   transition: color 0.3s ease, transform 0.3s ease; /* 트랜지션 효과 추가 */
 
   &:hover {

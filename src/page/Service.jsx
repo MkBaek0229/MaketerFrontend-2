@@ -45,6 +45,7 @@ const Service = () => {
     const result = Object.groupBy(choiced_TasteList, ({ level }) =>
       level == 3 ? "good" : "bad"
     );
+
     setChoice_favorite(result.good.map((el) => el.name).join());
     // if(result[3].length >= 2) {
     //   console.log("좋아하는 맛이 두개이상이네요!")
@@ -271,7 +272,7 @@ const Service = () => {
 export default Service;
 
 const Fildset = styled.div`
-  max-width: 600px;
+  max-width: 1000px;
   max-height: 100vh;
   margin-bottom: 18px;
 `;

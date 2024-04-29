@@ -47,7 +47,7 @@ function Header({ setAuth, nickname }) {
       </Cell>
 
       <UserName>안녕하세요, {name}님</UserName>
-      <button onClick={(e) => logout(e)}>Logout</button>
+      <button onClick={(e) => logout(e)}>로그아웃</button>
     </Container>
   );
 }
@@ -90,8 +90,7 @@ const UserName = styled.span`
   align-self: center;
 `;
 
-
 const Logout = styled.button`
    <a href="#" class="btn-gradient orange small">Button</a>
    
-`
+`;

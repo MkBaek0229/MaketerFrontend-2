@@ -47,7 +47,7 @@ function Main({ setAuth }) {
   };
   return (
     <Container>
-      <Login>
+      <LoginForm>
         <h2>로그인</h2>
         <form onSubmit={onSubmitForm}>
           <Input
@@ -65,9 +65,10 @@ function Main({ setAuth }) {
             onChange={(e) => onChange(e)}
           />
           <Button type="submit">로그인</Button>
+
           <Link to={"/register"}>회원가입 하기</Link>
         </form>
-      </Login>
+      </LoginForm>
     </Container>
   );
 }
@@ -80,7 +81,7 @@ const Container = styled.div`
   margin: auto;
 `;
 
-const Login = styled.div`
+const LoginForm = styled.div`
   position: relative;
   z-index: 1;
   background: #ffffff;
